@@ -15,10 +15,10 @@ int main()
     {
         cin.ignore();
         if (!first)
-        {
             cout << endl;
-            first = false;
-        }
+
+            first = false; //fix the problem where first would never become false
+    
 
         string line;
         vector<vector<int>> grid(m + 1, vector<int>(n + 1, 0));
@@ -40,7 +40,7 @@ int main()
                 if (grid[v][u] == -1)
                     for (int r = 0; r < 8; r++)
                     {
-                        if (v + dx[r] >= 0 && u + dy[r] >= 0)
+                        if (v + dx[r] >= 0 && u + dy[r] >= 0 && v + dx[r] < m && u + dy[r] < n) // add upper bound
                         {
                             if (grid[v + dx[r]][u + dy[r]] == -1)
                                 continue;
