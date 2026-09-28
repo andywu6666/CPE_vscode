@@ -1,25 +1,28 @@
-    //Accepted
-    #include <iostream>
-    #include <vector>
-    #include <string>
-    #include <map>
-    using namespace std;
-    int main()
-    {
-        int n;
-        cin >> n;
-        map<string, int> country;
-        for (int i = 0; i < n; i++)
-        {
-            string str, trash;
-            cin >> str;
-            getline (cin, trash);
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
 
-            country[str]++;
-        }
-        for (auto c : country)
-        {
-            cout << c.first << " " << c.second << endl;
-        }
-        return 0;
+int main()
+{
+    int a;
+    cin >> a;
+    // cin.ignore();
+    map<string, int> country;
+    for (int i = 0; i < a; i++)
+    {
+        string str;
+        cin >> str;
+        cin.ignore();
+        string name;
+        getline(cin, name);
+
+        country[str]++;
     }
+    for (const auto p : country)
+    {
+        cout << p.first << " " << p.second << endl;
+    }
+    return 0;
+}
