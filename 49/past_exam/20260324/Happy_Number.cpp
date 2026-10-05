@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <set>
 #include <algorithm>
 using namespace std;
 
@@ -14,57 +14,36 @@ long long int process(long long int n)
         sum += digit * digit;
         n /= 10;
     }
-        return sum; 
-
+    return sum;
 }
-
-
 
 void solve()
 {
-    //input
+    // input
     long long int n;
-    int p = 1;
-    while (cin >> n)
+    int p;
+    cin >> p;
+    for (int i = 1; i <= p; i++)
     {
-
-
-        long long int result = 0;
-        vector<long long int>exist;
-        bool is_happy = false;
-        
-        again:
-        result = process(n);
-        for (int i = 0; i < exist.size(); i++)
+        while (cin >> n)
         {
-            if (exist[i] == result)
-                break;
-            else if (exist[i] == 1){
-                is_happy = true;
-                break;
-            }
-            else
+            long long int original_n = n;
+            set<long long int> seen;
+
+            while (n != 1 && !seen.count(n))
             {
-                exist.push_back(result);
-                n = result;
-                goto again;
+                seen.insert(n);
+                n = process(n);
             }
-        }   
-        
 
-        //output
-        if (is_happy)
-            cout << "Case #" << p << ": " << n << " is a Happy number.";
-        else
-            cout << "Case #" << p << ": " << n << " is an Unhappy number.";
-        cout << endl;
-        p++;
-
+            // output
+            if (n == 1)
+                cout << "Case #" << p << ": " << original_n << " is a Happy number.";
+            else
+                cout << "Case #" << p << ": " << original_n << " is an Unhappy number.";
+            cout << endl;
+        }
     }
-
-
-
-
 }
 
 int main()
