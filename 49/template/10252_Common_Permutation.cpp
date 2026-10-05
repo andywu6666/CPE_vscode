@@ -11,7 +11,6 @@ void solve()
     string str2;
     while (getline(cin, str1) && getline(cin, str2))
     {
-        char alphabet[27] ="abcdefghijklmnopqrstuvwxyz";
         int countA[27] = {0};
         int countB[27] = {0};
         int count_min[27] = {0};
@@ -29,7 +28,7 @@ void solve()
 
             for (int j = 0; j < count_min[i]; j++)
             {
-                cout << alphabet[i];
+                cout << (char)('a' + i);
             }
         }
         cout << endl;
