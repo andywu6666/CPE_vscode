@@ -15,9 +15,15 @@ bool order(pair<int, int> &a, pair<int, int> &b)
 
 void solve()
 {
+    bool is_first = true;
         string str;
     while (getline(cin, str))
     {
+        if (!is_first){
+            cout << endl;
+        }
+        is_first = false;
+
         int freq[129] = {0};
         vector<pair<int, int>> ASCII_table;
         for (int i = 0; i < str.length(); i++)
@@ -38,6 +44,7 @@ void solve()
 
 int main()
 {
+
         solve();
     return 0;
 }
